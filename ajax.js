@@ -1,13 +1,13 @@
 function ajax(type,url,data){
     let xhr=new XMLHttpRequest();
-    xhr.onreadystatechange=new Promise(()=>{
+    xhr.onreadystatechange=new Promise((resolve,reject)=>{
         if(xhr.readyState==4&&xhr.status==200){
             let result=xhr.responseText;
             if(result!=null){
                 let arr=JSON.parse(result);
-                Promise.resolve(arr)
+                resolve(arr)
             }else{
-                Promise.reject()
+                reject()
             }
         }
     });
